@@ -36,7 +36,9 @@ FILES = ft_atoi.c \
 		ft_strrchr.c \
 		ft_substr.c \
 		ft_tolower.c \
-		ft_toupper.c
+		ft_toupper.c \
+		ft_printf.c \
+		ft_putn.c
 
 BONUS_FILES = ft_lstnew.c \
 		ft_lstadd_front.c \
