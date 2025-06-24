@@ -1,30 +1,34 @@
-NAME=
-AR=ar rcs
-CFLAGS=-Wall -Werror -Wextra
-RM=rm -f
 
-FILES =
+NAME_CLIENT = client
+NAME_SERVER = server
 
-OBJS=$(FILES:.c=.o)
-BONUS_OBJS=$(BONUS_FILES:.c=.o)
+SRCS_CLIENT = client.c
+SRCS_SERVER = server.c
 
-all: $(NAME)
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
-$(NAME): $(OBJS) $(BONUS_OBJS)
-	$(AR) $@ $?
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
-%.o: %.c
-	cc -c $(CFLAGS) $?
+all: $(LIBFT) $(NAME_CLIENT) $(NAME_SERVER)
+
+$(LIBFT):
+	make -C $(LIBFT_DIR)
+
+$(NAME_CLIENT): $(SRCS_CLIENT) $(LIBFT)
+	$(CC) $(CFLAGS) -o $@ $(SRCS_CLIENT) -L$(LIBFT_DIR) -lft
+
+$(NAME_SERVER): $(SRCS_SERVER) $(LIBFT)
+	$(CC) $(CFLAGS) -o $@ $(SRCS_SERVER) -L$(LIBFT_DIR) -lft
 
 clean:
-	$(RM) $(OBJS) $(BONUS_OBJS)
+	make clean -C $(LIBFT_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	make fclean -C $(LIBFT_DIR)
+	rm -f $(NAME_CLIENT) $(NAME_SERVER)
 
 re: fclean all
 
-bonus: $(OBJS) $(BONUS_OBJS)
-	$(AR) $(NAME) $(OBJS)
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
