@@ -6,7 +6,7 @@
 /*   By: pahernan <pahernan@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 12:11:22 by pahernan          #+#    #+#             */
-/*   Updated: 2025/01/20 10:11:14 by pahernan         ###   ########.fr       */
+/*   Updated: 2025/06/26 14:20:32 by pahernan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
-int	ft_printf(const char *str, ...);
+int		ft_printf(const char *str, ...);
 void	ft_putnbr(int nb, int *size);
 void	ft_unsignedputnbr(unsigned int nb, int *size);
 void	ft_puthex(unsigned long n, char *hexChars, int *size);
